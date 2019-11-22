@@ -21,16 +21,19 @@ public class FlashGame : MonoBehaviour
     public GameObject Q2;
     public GameObject Q3;
     public GameObject Answer;
+
     bool oneplay = false;
     bool twoplay = false;
     bool threeplay = false;
 
-
+    public int sig;
     public int sum;
     private int randamnum;
     // Start is called before the first frame update
     void Start()
     {
+        sig = Player.signal;
+        Time.timeScale = 1.0f;
         sum = 0;
         scenecount = 0;
         GameScene.SetActive(false);
@@ -49,11 +52,16 @@ public class FlashGame : MonoBehaviour
         Q2.SetActive(false);
         Q3.SetActive(false);
         Answer.SetActive(false);
+      
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(sig == 1)
+        {
+            Time.timeScale = 0f;
+        }
         Debug.Log("scene = " + scenecount);
         if (Input.GetKeyDown(KeyCode.A))
         {

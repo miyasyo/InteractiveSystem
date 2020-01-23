@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public GameObject trans_player;
     public GameObject gameoverblock;
     public static int signal = 0;
+    public int count = 0;
     private int speed = 1;
     private void Start()
     {
@@ -45,7 +46,11 @@ public class Player : MonoBehaviour
             //相手のタグがBallならば、自分を消す
             Destroy(other.gameObject);
             Debug.Log("当たった！");
-            signal = 1;
+            count += 1;
+            if (count == 3)
+            {
+                signal = 1;
+            }
         }
     }
 
